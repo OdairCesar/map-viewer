@@ -1,18 +1,23 @@
 import { alpha, makeStyles } from '@material-ui/core'
+import zIndex from '@material-ui/core/styles/zIndex'
 
 export default makeStyles((theme) => ({
   title: {
     display: 'none',
+    color: '#353F61',
+    fontFamily: "'Roboto', sans-serif",
+    fontWeight: '500',
     [theme.breakpoints.up('sm')]: {
       display: 'block'
     }
   },
   search: {
     position: 'relative',
+    color: '#000',
     borderRadius: theme.shape.borderRadius,
-    backgroundColor: alpha(theme.palette.common.white, 0.15),
+    backgroundColor: alpha(theme.palette.common.black, 0.15),
     '&:hover': {
-      backgroundColor: alpha(theme.palette.common.white, 0.25)
+      backgroundColor: alpha(theme.palette.common.black, 0.25)
     },
     marginRight: theme.spacing(2),
     marginLeft: 0,
@@ -24,6 +29,7 @@ export default makeStyles((theme) => ({
   },
   searchIcon: {
     padding: theme.spacing(0, 2), 
+    color: '#000',
     height: '100%', 
     position: 'absolute',
     pointerEvents: 'none',
@@ -45,6 +51,7 @@ export default makeStyles((theme) => ({
   },
   toolbar: {
     display: 'flex',
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
+    backgroundColor: '#BFC6E0',
   }
 }))
