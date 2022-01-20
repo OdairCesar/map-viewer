@@ -10,15 +10,25 @@ import List from "./components/List";
 
 const App = () => {
   const [ places, setPlaces ] = useState([])
+  const [ coordinates, setCoordinates ] = useState({ lat: 0, lng: 0 })
+  const [ bounds, setBounds ] = useState({
+    sw: { lat: '-23.6017', lng: '-46.7482'},
+    ne: { lat: '-23.51', lng: '-46.5559'}
+  })
 
   useEffect(() => {
-    getPlacesData()
+    navigator.geolocation.getCurrentPosition(({ coords: {latitude, longitude} }) => {
+      setCoordinates({ lat: latitude, lng: longitude })
+    })
+  }, [])
+
+  useEffect(() => {
+    getPlacesData(bounds.sw, bounds.ne)
       .then((data) => {
-        console.log(data)
         setPlaces(data)
       })
 
-  }, [])
+  }, [coordinates, bounds])
 
   return (
     <>
@@ -26,10 +36,13 @@ const App = () => {
       <Header />
       <Grid container spacing={3} style={{ width: "100%" }}>
         <Grid item xs={12} md={4}>
-          <List />
+          <List places={places}/>
         </Grid>
         <Grid item xs={12} md={8}>
-          <Map />
+          <Map 
+            setCoordinates={setCoordinates}
+            setBounds={setBounds}
+            coordinates={coordinates}/>
         </Grid>
       </Grid>
     </>
