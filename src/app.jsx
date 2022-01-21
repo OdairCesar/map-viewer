@@ -11,10 +11,7 @@ import List from "./components/List";
 const App = () => {
   const [ places, setPlaces ] = useState([])
   const [ coordinates, setCoordinates ] = useState({ lat: 0, lng: 0 })
-  const [ bounds, setBounds ] = useState({
-    sw: { lat: '-23.6017', lng: '-46.7482'},
-    ne: { lat: '-23.51', lng: '-46.5559'}
-  })
+  const [ bounds, setBounds ] = useState({})
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(({ coords: {latitude, longitude} }) => {

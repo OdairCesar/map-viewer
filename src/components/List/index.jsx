@@ -5,26 +5,10 @@ import PlaceDetails from '../PlaceDetails'
 
 import useStyles from './style'
 
-export default function List() {
+export default function List({ places }) {
   const classes = useStyles()
   const [ type, setType ] = useState('restaurantes')
   const [ rating, setRating ] = useState('')
-
-  const places = [
-    { name: 'Cool Place' },
-    { name: 'Best Beer' },
-    { name: 'Best Steak' },
-    { name: 'Best Steak' },
-    { name: 'Best Steak' },
-    { name: 'Best Steak' },
-    { name: 'Best Steak' },
-    { name: 'Best Steak' },
-    { name: 'Best Steak' },
-    { name: 'Best Steak' },
-    { name: 'Best Steak' },
-    { name: 'Best Steak' },
-    { name: 'Best Steak' }
-  ]
 
   return (
     <div className={classes.container}>
